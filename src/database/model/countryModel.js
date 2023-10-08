@@ -3,11 +3,12 @@ import { DataTypes } from "sequelize";
 
 const CountryModel = sequelize.define('country', {
     id: {
-        type: DataTypes.STRING(3),
-        primaryKey: true
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
     },
     nombre: {
-        type: DataTypes.STRING(30)
+        type: DataTypes.STRING(60)
     },
     image: {
         type: DataTypes.STRING
@@ -15,7 +16,7 @@ const CountryModel = sequelize.define('country', {
     continent: {
         type: DataTypes.STRING(20)
     },
-    captial: {
+    capital: {
         type: DataTypes.STRING(30)
     },
     subregion: {
@@ -26,6 +27,9 @@ const CountryModel = sequelize.define('country', {
     },
     population: {
         type: DataTypes.INTEGER
+    },
+    map: {
+        type: DataTypes.STRING
     }
 }, {timestamps: false})
 

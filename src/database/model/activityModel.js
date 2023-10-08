@@ -9,6 +9,7 @@ const ActivityModel = sequelize.define('activities', {
     },
     name: {
         type: DataTypes.STRING(15),
+        unique: true
     },
     difficulty: {
         type: DataTypes.INTEGER
