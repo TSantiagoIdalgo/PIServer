@@ -4,6 +4,7 @@ export default class ActivitiesController {
     static async getAllActivities (_req, res) {
         try {
             const activities = await Activities.getAll()
+            if (activities.length === 0) throw new Error('there are no activities')
             res.status(200).json(activities)
         } catch (error) {
             res.status(400).json({ error: error.message })
