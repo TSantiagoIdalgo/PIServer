@@ -61,6 +61,7 @@ export default class UserController {
         const { id } = req.params
         try {
             const userActivities = await User.getUserActivities(id)
+            if (userActivities.length === 0) throw new Error('The user has not have activities or doesn`t exist')
             res.status(200).json(userActivities)
         } catch (error) {
             res.status(404).json({ error: error.message })
