@@ -1,4 +1,5 @@
 import User from "../models/users.js";
+import __dirname from "../../index.js";
 
 export default class UserController {
     static async getAll (_req, res) {
@@ -23,7 +24,7 @@ export default class UserController {
     }
 
     static async userPost (req, res) {
-        const { userName, email, password} = req.body
+        const { userName, email, password } = req.body
         try {
             if (email === undefined) throw new Error('missing data')
             if (userName.length <= 3 || email.length <= 3 || password.length <= 3) {
@@ -65,6 +66,24 @@ export default class UserController {
             res.status(200).json(userActivities)
         } catch (error) {
             res.status(404).json({ error: error.message })
+        }
+    }
+
+    static async userUpload (req, res) {
+        try {
+            const updatedImg = await User.userUpload(req.body.email, req.file.path)
+            res.status(202).json(updatedImg)
+        } catch (error) {
+            res.status(400).json({ error: error.message })
+        }
+    }
+    static async getUserImage (req, res) {
+        const { id } = req.params
+        try {
+            const user = await User.getSingleUser(id)
+            res.sendFile(__dirname + user.userImg)
+        } catch (error) {
+            res.status(400).json({ error: error.message })
         }
     }
 }

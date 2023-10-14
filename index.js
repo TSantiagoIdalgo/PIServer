@@ -3,7 +3,12 @@ import sequelize from './src/database/db.js'
 import userRoutes from './src/routes/routesUsers.js';
 import countryRoutes from './src/routes/contryRoutes.js';
 import activitiesRoutes from './src/routes/activitiesRoutes.js'
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 import './src/database/associations/associations.js'
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const PORT = process.env.PORT || 3001
 
@@ -23,3 +28,5 @@ main()
 server.use(userRoutes)
 server.use(countryRoutes)
 server.use(activitiesRoutes)
+
+export default __dirname
