@@ -7,7 +7,7 @@ const CountryModel = sequelize.define('country', {
         primaryKey: true,
         autoIncrement: true
     },
-    nombre: {
+    name: {
         type: DataTypes.STRING(60)
     },
     image: {
