@@ -1,8 +1,10 @@
 import bcrypt from 'bcrypt'
 import Jwt  from 'jsonwebtoken'
+import dotenv from 'dotenv';
 import UserModel from '../database/model/userModel.js'
 import ActivityModel from '../database/model/activityModel.js'
 import CountryModel from '../database/model/countryModel.js'
+dotenv.config()
 
 export default class User {
     static async getAllUser () {
@@ -64,7 +66,7 @@ export default class User {
             email: user?.dataValues.email
         }
 
-      const token = Jwt.sign(userToken, 'pepito123')
+      const token = Jwt.sign(userToken, process.env.SECRET)
       return { ...user?.dataValues, token }
     }
 }
