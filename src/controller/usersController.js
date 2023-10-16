@@ -23,12 +23,9 @@ export default class UserController {
     }
 
     static async userPost (req, res) {
-        const { userName, email, password} = req.body
+        const { email } = req.body
         try {
             if (email === undefined) throw new Error('missing data')
-            if (userName.length <= 3 || email.length <= 3 || password.length <= 3) {
-                throw new Error('Missing data')
-              }
             const newUser = await User.userPost(req)
             res.status(201).json(newUser)
         } catch (error) {
@@ -66,5 +63,14 @@ export default class UserController {
         } catch (error) {
             res.status(404).json({ error: error.message })
         }
+    }
+
+    static async userLogin (req, res) {
+        try {
+            const user = await User.userLogin(req)
+            res.status(200).json(user)
+          } catch (error) {
+            res.status(203).json({ error: error.message })
+          }
     }
 }

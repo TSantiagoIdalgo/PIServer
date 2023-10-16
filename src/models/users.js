@@ -1,3 +1,5 @@
+import bcrypt from 'bcrypt'
+import Jwt  from 'jsonwebtoken'
 import UserModel from '../database/model/userModel.js'
 import ActivityModel from '../database/model/activityModel.js'
 import CountryModel from '../database/model/countryModel.js'
@@ -14,7 +16,14 @@ export default class User {
     }
 
     static async userPost (req) {
-        const newUser = await UserModel.create(req.body)
+        const { userName, email, password } = req.body
+        const saltsRound = 10
+        const passwordHash = await bcrypt.hash(password, saltsRound)
+        const newUser = await UserModel.create({
+        userName,
+        email,
+        passwordHash
+        })
         return newUser
     }
 
@@ -41,5 +50,21 @@ export default class User {
             include: [CountryModel]
         })
         return activities
+    }
+
+    static async userLogin (req) {
+      const { email, password } = req.body
+      const user = await UserModel.findByPk(email)
+      const passwordCorrect = user === null
+       ? false
+       : await bcrypt.compare(password, user.dataValues.passwordHash)
+      if (!passwordCorrect) throw new Error('Invalid user or password')
+        const userToken = {
+            id: user?.dataValues.id,
+            email: user?.dataValues.email
+        }
+
+      const token = Jwt.sign(userToken, 'pepito123')
+      return { ...user?.dataValues, token }
     }
 }

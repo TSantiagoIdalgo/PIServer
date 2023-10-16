@@ -11,10 +11,11 @@ const UserModel = sequelize.define('users', {
       },
       email: {
         type: DataTypes.STRING(50),
-        primaryKey: true
+        primaryKey: true,
+        unique: true
       },
-      password: {
-        type: DataTypes.STRING(16)
+      passwordHash: {
+        type: DataTypes.STRING(120)
       }
 })
 
