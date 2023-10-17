@@ -15,21 +15,19 @@ export default class UserController {
         const { id } = req.params
         try {
             const user = await User.getSingleUser(id)
-            if (user === null) throw new Error('User not found')
-            res.status(200).json(user)
+            if (user) res.status(200).send('Email in use')
+            else res.status(202).json({ error: 'User doesn`t exist' })
         } catch (error) {
-            res.status(404).json({ error: error.message })
+            res.status(400).json({ error: error.message })
         }
     }
 
     static async userPost (req, res) {
-        const { email } = req.body
         try {
-            if (email === undefined) throw new Error('missing data')
             const newUser = await User.userPost(req)
             res.status(201).json(newUser)
         } catch (error) {
-            res.status(404).json({ error: error.message })
+            res.status(500).json({ error: error.message })
         }
     }
     

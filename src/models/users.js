@@ -13,7 +13,11 @@ export default class User {
     }
 
     static async getSingleUser (pk) {
-        const user = await UserModel.findByPk(pk)
+        const user = await UserModel.findOne({
+            where: {
+                email: pk
+            }
+        })
         return user
     }
 
