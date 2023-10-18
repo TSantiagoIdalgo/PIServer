@@ -15,7 +15,7 @@ export default class UserController {
         const { id } = req.params
         try {
             const user = await User.getSingleUser(id)
-            if (user) res.status(200).send('Email in use')
+            if (user) res.status(200).json(user)
             else res.status(202).json({ error: 'User doesn`t exist' })
         } catch (error) {
             res.status(400).json({ error: error.message })
