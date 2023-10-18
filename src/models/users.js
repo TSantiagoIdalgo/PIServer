@@ -66,7 +66,7 @@ export default class User {
        : await bcrypt.compare(password, user.dataValues.passwordHash)
       if (!passwordCorrect) throw new Error('Invalid user or password')
         const userToken = {
-            id: user?.dataValues.id,
+            name: user?.dataValues.userName,
             email: user?.dataValues.email
         }
 
