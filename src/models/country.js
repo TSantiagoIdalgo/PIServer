@@ -7,7 +7,7 @@ export default class Country {
         if (Object.values(req).length > 0) {
             const countries = country.filter((c) => {
                 const name = req.name.toLowerCase()
-                return c.dataValues.nombre.toLowerCase().includes(name)
+                return c.dataValues.name.toLowerCase().includes(name)
             })
             return countries
         }
