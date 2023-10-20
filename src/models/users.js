@@ -49,11 +49,13 @@ export default class User {
     }
 
     static async getUserActivities (id) {
-        const activities = await ActivityModel.findAll({
-            where: {
-                userId: id
-            },
-            include: [CountryModel]
+        const activities = await CountryModel.findAll({
+            include: [{
+                model: ActivityModel,
+                where: {
+                    userId: id
+                }
+            }]
         })
         return activities
     }
