@@ -15,7 +15,7 @@ const UserModel = sequelize.define('users', {
         unique: true
       },
       passwordHash: {
-        type: DataTypes.STRING(120)
+        type: DataTypes.STRING(70)
       }
 })
 

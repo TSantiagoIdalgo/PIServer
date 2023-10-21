@@ -18,7 +18,7 @@ export default class ActivitiesController {
             if (activities === null) throw new Error('Activity not found')
             res.status(200).json(activities)
         } catch (error) {
-            res.status(404).json({ error: error.message })
+            res.status(203).json({ error: error.message })
         }
     }
     

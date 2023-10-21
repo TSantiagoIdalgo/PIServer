@@ -15,7 +15,7 @@ const ActivityModel = sequelize.define('activities', {
         type: DataTypes.INTEGER
     },
     duration: {
-        type: DataTypes.INTEGER
+        type: DataTypes.STRING(5)
     },
     season: {
         type: DataTypes.STRING(15)

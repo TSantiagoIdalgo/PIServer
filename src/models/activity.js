@@ -9,7 +9,7 @@ export default class Activities {
     }
 
     static async getSingle (id) {
-        const activities = await ActivityModel.findAll({
+        const activities = await ActivityModel.findOne({
             where: {
                 name: id
             },
