@@ -5,7 +5,7 @@ const activitiesRoutes = Router()
 
 activitiesRoutes.get('/activities', ActivitiesController.getAllActivities)
 
-activitiesRoutes.get('/activities/:id', ActivitiesController.getSingleActivity)
+activitiesRoutes.get('/activities/:id/:userId', ActivitiesController.getSingleActivity)
 
 activitiesRoutes.post('/activities/', ActivitiesController.postActivity)
 

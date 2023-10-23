@@ -8,10 +8,11 @@ export default class Activities {
         return activities
     }
 
-    static async getSingle (id) {
+    static async getSingle (id, userId) {
         const activities = await ActivityModel.findOne({
             where: {
-                name: id
+                name: id,
+                userId: userId
             },
             include: [CountryModel]
         })

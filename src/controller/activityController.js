@@ -12,9 +12,9 @@ export default class ActivitiesController {
     }
 
     static async getSingleActivity (req, res) {
-        const { id } = req.params
+        const { id, userId } = req.params
         try {
-            const activities = await Activities.getSingle(id)
+            const activities = await Activities.getSingle(id, userId)
             if (activities === null) throw new Error('Activity not found')
             res.status(200).json(activities)
         } catch (error) {
