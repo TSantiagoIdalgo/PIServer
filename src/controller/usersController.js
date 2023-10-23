@@ -31,27 +31,6 @@ export default class UserController {
         }
     }
     
-    static async userPut (req, res) {
-        const { id } = req.params
-        try {
-            const updatedUser = await User.userPut(id, req)
-            if (updatedUser === null) throw new Error('User not found')
-            res.status(202).json(updatedUser)
-        } catch (error) {
-            res.status(404).json({ error: error.message })
-        }
-    }
-
-    static async deleteUser (req, res) {
-        const { id } = req.params
-        try {
-            await User.deleteUser(id)
-            res.sendStatus(204)
-        } catch (error) {
-            res.status(404).json({ error: error.message })
-        }
-    }
-
     static async getUserActivities (req, res) {
         const { id } = req.params
         try {
@@ -59,7 +38,7 @@ export default class UserController {
             if (userActivities.length === 0) throw new Error('The user has not have activities or doesn`t exist')
             res.status(200).json(userActivities)
         } catch (error) {
-            res.status(404).json({ error: error.message })
+            res.status(206).json({ error: error.message })
         }
     }
 

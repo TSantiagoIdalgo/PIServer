@@ -32,17 +32,6 @@ export default class ActivitiesController {
         }
     }
 
-    static async putActivity (req, res) {
-        const { id } = req.params
-        try {
-            const updatedActivity = await Activities.put(id, req)
-            if (updatedActivity == null) throw new Error('Activity not found')
-            res.status(202).json(updatedActivity)
-        } catch (error) {
-            res.status(500).json({ error: error.message })
-        }
-    }
-
     static async deleteActivity (req, res) {
         const { id } = req.params
         try {

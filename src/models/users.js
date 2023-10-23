@@ -33,21 +33,6 @@ export default class User {
         return newUser
     }
 
-    static async userPut (pk, req) {
-        const updateUser = await UserModel.findByPk(pk)
-        updateUser?.set(req.body)
-        updateUser?.save()
-        return updateUser
-    }
-
-    static async deleteUser (pk) {
-        await UserModel.destroy({
-            where: {
-                email: pk
-            }
-        })
-    }
-
     static async getUserActivities (id) {
         const activities = await CountryModel.findAll({
             include: [{

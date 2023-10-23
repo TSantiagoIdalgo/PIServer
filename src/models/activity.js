@@ -36,17 +36,6 @@ export default class Activities {
         return newActivity
     }
 
-    static async put (id, req) {
-        const updatedActivity = await ActivityModel.findOne({
-            where: {
-                name: id
-            }
-        })
-        updatedActivity?.set(req.body)
-        updatedActivity?.save()
-        return updatedActivity
-    }
-
     static async delete (id) {
         await ActivityModel.destroy({
             where: {

@@ -1,9 +1,5 @@
 import server from './src/server.js';
 import sequelize from './src/database/db.js'
-import userRoutes from './src/routes/routesUsers.js';
-import countryRoutes from './src/routes/contryRoutes.js';
-import activitiesRoutes from './src/routes/activitiesRoutes.js'
-
 import './src/database/associations/associations.js'
 
 const PORT = process.env.PORT || 3001
@@ -20,7 +16,3 @@ async function main () {
     }
 }
 main()
-
-server.use(userRoutes)
-server.use(countryRoutes)
-server.use(activitiesRoutes)
