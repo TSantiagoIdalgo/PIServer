@@ -31,6 +31,16 @@ export default class UserController {
         }
     }
     
+    static async deleteUser (req, res) {
+        const { id } = req.params
+        try {
+            await User.deleteUser(id)
+            res.sendStatus(204)
+        } catch (error) {
+            res.status(404).json({ error: error.message })
+        }
+    }
+
     static async getUserActivities (req, res) {
         const { id } = req.params
         try {

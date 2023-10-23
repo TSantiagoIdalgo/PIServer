@@ -11,8 +11,6 @@ userRoutes.post('/users/login', UserController.userLogin)
 
 userRoutes.get('/users/:id', UserController.getSingle)
 
-userRoutes.put('/users/:id', UserController.userPut)
-
 userRoutes.delete('/users/:id', UserController.deleteUser)
 
 userRoutes.get('/users/:id/activities', UserController.getUserActivities)

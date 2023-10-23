@@ -4,9 +4,11 @@ import ActivitiesController from "../controller/activityController.js";
 const activitiesRoutes = Router()
 
 activitiesRoutes.get('/activities', ActivitiesController.getAllActivities)
+
 activitiesRoutes.get('/activities/:id', ActivitiesController.getSingleActivity)
+
 activitiesRoutes.post('/activities/', ActivitiesController.postActivity)
-activitiesRoutes.put('/activities/:id', ActivitiesController.putActivity)
+
 activitiesRoutes.delete('/activities/:id', ActivitiesController.deleteActivity)
 
 export default activitiesRoutes

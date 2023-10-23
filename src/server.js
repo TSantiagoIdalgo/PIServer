@@ -1,9 +1,9 @@
 import express from 'express'
 import morgan from 'morgan'
 import cors from 'cors'
-import userRoutes from './routes/routesUsers'
-import countryRoutes from './routes/contryRoutes'
-import activitiesRoutes from './routes/activitiesRoutes'
+import userRoutes from './routes/routesUsers.js'
+import countryRoutes from './routes/contryRoutes.js'
+import activitiesRoutes from './routes/activitiesRoutes.js'
 
 const server = express()
 
