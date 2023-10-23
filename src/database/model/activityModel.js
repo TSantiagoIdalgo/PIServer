@@ -8,8 +8,7 @@ const ActivityModel = sequelize.define('activities', {
         primaryKey: true
     },
     name: {
-        type: DataTypes.STRING(15),
-        unique: true
+        type: DataTypes.STRING(15)
     },
     difficulty: {
         type: DataTypes.INTEGER
