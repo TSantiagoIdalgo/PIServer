@@ -9,6 +9,6 @@ activitiesRoutes.get('/activities/:id/:userId', ActivitiesController.getSingleAc
 
 activitiesRoutes.post('/activities/', ActivitiesController.postActivity)
 
-activitiesRoutes.delete('/activities/:id', ActivitiesController.deleteActivity)
+activitiesRoutes.delete('/activities/:id/:userId', ActivitiesController.deleteActivity)
 
 export default activitiesRoutes

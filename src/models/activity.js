@@ -37,10 +37,11 @@ export default class Activities {
         return newActivity
     }
 
-    static async delete (id) {
+    static async delete (id, userId) {
         await ActivityModel.destroy({
             where: {
-                name: id
+                name: id,
+                userId: userId
             }
         })
     }

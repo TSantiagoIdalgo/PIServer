@@ -33,9 +33,9 @@ export default class ActivitiesController {
     }
 
     static async deleteActivity (req, res) {
-        const { id } = req.params
+        const { id, userId } = req.params
         try {
-            await Activities.delete(id)
+            await Activities.delete(id, userId)
             res.sendStatus(204)
         } catch (error) {
             res.status(500).json({ error: error.message })
